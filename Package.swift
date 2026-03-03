@@ -28,17 +28,17 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "IDnowEID",
-            url: "https://github.com/thomas-legris-idnow/eid-deploy-test/releases/download/2.2.0/IDnowEID.xcframework.zip",
-            checksum: "bd440c460b3c4ae59baeb661be56035ea6543807955ab41f899096580a6854aa"
+            url: "https://github.com/thomas-legris-idnow/eid-deploy-test/releases/download/3.0.0/IDnowEID.xcframework.zip",
+            checksum: "28060b14db576ffdae6fd8ed577e7a6c6dbb5ed9ef520c4679479515a4eb2f41"
         ),
         .binaryTarget(
             name: "IDnowEIDDynamic",
-            url: "https://github.com/thomas-legris-idnow/eid-deploy-test/releases/download/2.2.0/IDnowEIDDynamic.xcframework.zip",
-            checksum: "032aebf80c4457d563229859c194d8168c4a5f45db9197e8299cb1cae308e410"
+            url: "https://github.com/thomas-legris-idnow/eid-deploy-test/releases/download/3.0.0/IDnowEIDDynamic.xcframework.zip",
+            checksum: "eb0b42bde623cb62f1576c18aef17db086d795732797510e1c6aa998d28247e8"
         ),
         .binaryTarget(
             name: "IDnowEIDGovernikus",
-            url: "https://github.com/thomas-legris-idnow/eid-deploy-test/releases/download/2.2.0/IDnowEIDGovernikus.xcframework.zip",
+            url: "https://github.com/thomas-legris-idnow/eid-deploy-test/releases/download/3.0.0/IDnowEIDGovernikus.xcframework.zip",
             checksum: "7975a3231edb64bc9619356edd2f4cb03767cb59d9016ba815120df86f785be5"
         ),
         .target(
