@@ -56,7 +56,7 @@ let package = Package(
                 "IDnowEIDGovernikus",
                 .product(name: "OpenSSL", package: "OpenSSL"),
                 .product(name: "SunflowerUIKit", package: "sunflower-sdk-ios"),
-                .product(name: "AusweisApp2", package: "AusweisApp2")
+                .product(name: "AusweisApp2", package: "AusweisApp2-SDK-iOS")
             ],
             path: "sources-governikus"
         )
