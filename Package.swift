@@ -15,20 +15,30 @@ let package = Package(
             name: "IDnowEIDDynamic",
             targets: ["IDnowEIDDynamicWrapper"]
         )
+        .library(
+            name: "IDnowEIDGovernikus",
+            targets: ["IDnowEIDGovernikusWrapper"]
+        )
     ],
     dependencies: [
         .package(url: "https://github.com/krzyzanowskim/OpenSSL.git", exact: "3.6.1"),
         .package(url: "https://github.com/idnow/sunflower-sdk-ios.git", exact: "2.1.4")
+        .package(url: "https://github.com/Governikus/AusweisApp2-SDK-iOS.git", exact: "2.2.2")
     ],
     targets: [
         .binaryTarget(
             name: "IDnowEID",
             url: "https://github.com/thomas-legris-idnow/eid-deploy-test/releases/download//IDnowEID.xcframework.zip",
-            checksum: "aa0b9b604016c29c6c3cc70e78348a63a40919f3f8bf0330405f794b83948b5b"
+            checksum: "a5baeeccfce6d031999cb6fd8cb71178224a2d3a66d3d0ddd76d6ab10f9c7adc"
         ),
         .binaryTarget(
             name: "IDnowEIDDynamic",
             url: "https://github.com/thomas-legris-idnow/eid-deploy-test/releases/download//IDnowEIDDynamic.xcframework.zip",
+            checksum: "f837d892b34ed5eb639431211e11cdc3892bc946d6eeb6f01a076b027cc7bfc2"
+        ),
+        .binaryTarget(
+            name: "IDnowEIDGovernikus",
+            url: "https://github.com/thomas-legris-idnow/eid-deploy-test/releases/download//IDnowEIDGovernikus.xcframework.zip",
             checksum: "7975a3231edb64bc9619356edd2f4cb03767cb59d9016ba815120df86f785be5"
         ),
         .target(
@@ -39,6 +49,15 @@ let package = Package(
                 .product(name: "SunflowerUIKit", package: "sunflower-sdk-ios")
             ],
             path: "sources-dynamic"
+        ).target(
+            name: "IDnowEIDGovernikusWrapper",
+            dependencies: [
+                "IDnowEIDGovernikus",
+                .product(name: "OpenSSL", package: "OpenSSL"),
+                .product(name: "SunflowerUIKit", package: "sunflower-sdk-ios"),
+                .product(name: "AusweisApp2", package: "AusweisApp2")
+            ],
+            path: "sources-governikus"
         )
     ]
 )
