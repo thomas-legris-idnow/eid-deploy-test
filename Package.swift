@@ -18,7 +18,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/krzyzanowskim/OpenSSL.git", exact: "3.6.1"),
-        .package(url: "https://github.com/idnow/sunflower-sdk-ios.git", exact: "2.1.3")
+        .package(url: "https://github.com/idnow/sunflower-sdk-ios.git", exact: "2.1.4")
     ],
     targets: [
         .binaryTarget(
