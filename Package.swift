@@ -38,7 +38,7 @@ let package = Package(
         ),
         .binaryTarget(
             name: "IDnowEIDGovernikus",
-            url: "https://github.com/thomas-legris-idnow/eid-deploy-test/releases/download//IDnowEIDGovernikus.xcframework.zip",
+            url: "https://github.com/thomas-legris-idnow/eid-deploy-test/releases/download/2.0.0/IDnowEIDGovernikus.xcframework.zip",
             checksum: "7975a3231edb64bc9619356edd2f4cb03767cb59d9016ba815120df86f785be5"
         ),
         .target(
