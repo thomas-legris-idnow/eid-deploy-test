@@ -28,13 +28,13 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "IDnowEID",
-            url: "https://github.com/thomas-legris-idnow/eid-deploy-test/releases/download/3.0.0/IDnowEID.xcframework.zip",
-            checksum: "28060b14db576ffdae6fd8ed577e7a6c6dbb5ed9ef520c4679479515a4eb2f41"
+            url: "https://github.com/thomas-legris-idnow/eid-deploy-test/releases/download/3.1.0/IDnowEID.xcframework.zip",
+            checksum: "ff59a7346322b9d912c90d7d5ecb2231dad27133c06f5edbab9b09e4960647a6"
         ),
         .binaryTarget(
             name: "IDnowEIDDynamic",
-            url: "https://github.com/thomas-legris-idnow/eid-deploy-test/releases/download/3.0.0/IDnowEIDDynamic.xcframework.zip",
-            checksum: "eb0b42bde623cb62f1576c18aef17db086d795732797510e1c6aa998d28247e8"
+            url: "https://github.com/thomas-legris-idnow/eid-deploy-test/releases/download/3.1.0/IDnowEIDDynamic.xcframework.zip",
+            checksum: "c0a475bac12e2d6904388f3fd7f41331809b0b5c6ebd6aeaa5a8142b345b2fee"
         ),
         .binaryTarget(
             name: "IDnowEIDGovernikus",
