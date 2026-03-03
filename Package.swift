@@ -49,7 +49,7 @@ let package = Package(
                 .product(name: "SunflowerUIKit", package: "sunflower-sdk-ios")
             ],
             path: "sources-dynamic"
-        )
+        ),
         .target(
             name: "IDnowEIDGovernikusWrapper",
             dependencies: [
