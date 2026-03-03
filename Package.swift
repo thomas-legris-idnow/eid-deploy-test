@@ -28,17 +28,17 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "IDnowEID",
-            url: "https://github.com/thomas-legris-idnow/eid-deploy-test/releases/download/2.1.0/IDnowEID.xcframework.zip",
-            checksum: "3bb7a2b30cf70a5acd108248cc3398c51b7e2a6fb941d56e2c19d15a18b76fdf"
+            url: "https://github.com/thomas-legris-idnow/eid-deploy-test/releases/download/2.0.0/IDnowEID.xcframework.zip",
+            checksum: "c2165b26934a2c363b8e9beb1dba2d80b8109e130df3f42b01b4b02247faa80e"
         ),
         .binaryTarget(
             name: "IDnowEIDDynamic",
-            url: "https://github.com/thomas-legris-idnow/eid-deploy-test/releases/download/2.1.0/IDnowEIDDynamic.xcframework.zip",
-            checksum: "af18041145a813056be5cfb9dca135e1b5a71fabdba0cb3c0b46d09cc35b6849"
+            url: "https://github.com/thomas-legris-idnow/eid-deploy-test/releases/download/2.0.0/IDnowEIDDynamic.xcframework.zip",
+            checksum: "3562e2342b554c3b6e16e00bf2fe7d676f116bd4f06c28a25c11f5141a899526"
         ),
         .binaryTarget(
             name: "IDnowEIDGovernikus",
-            url: "https://github.com/thomas-legris-idnow/eid-deploy-test/releases/download/2.1.0/IDnowEIDGovernikus.xcframework.zip",
+            url: "https://github.com/thomas-legris-idnow/eid-deploy-test/releases/download//IDnowEIDGovernikus.xcframework.zip",
             checksum: "7975a3231edb64bc9619356edd2f4cb03767cb59d9016ba815120df86f785be5"
         ),
         .target(
@@ -49,7 +49,8 @@ let package = Package(
                 .product(name: "SunflowerUIKit", package: "sunflower-sdk-ios")
             ],
             path: "sources-dynamic"
-        ).target(
+        )
+        .target(
             name: "IDnowEIDGovernikusWrapper",
             dependencies: [
                 "IDnowEIDGovernikus",
