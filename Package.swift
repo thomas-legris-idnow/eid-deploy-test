@@ -14,7 +14,7 @@ let package = Package(
         .library(
             name: "IDnowEIDDynamic",
             targets: ["IDnowEIDDynamicWrapper"]
-        )
+        ),
         .library(
             name: "IDnowEIDGovernikus",
             targets: ["IDnowEIDGovernikusWrapper"]
