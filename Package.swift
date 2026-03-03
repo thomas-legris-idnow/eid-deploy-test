@@ -22,7 +22,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/krzyzanowskim/OpenSSL.git", exact: "3.6.1"),
-        .package(url: "https://github.com/idnow/sunflower-sdk-ios.git", exact: "2.1.4")
+        .package(url: "https://github.com/idnow/sunflower-sdk-ios.git", exact: "2.1.4"),
         .package(url: "https://github.com/Governikus/AusweisApp2-SDK-iOS.git", exact: "2.2.2")
     ],
     targets: [
