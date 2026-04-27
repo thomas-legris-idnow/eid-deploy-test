@@ -75,7 +75,8 @@ Here is the step to add them:
 
 - Add `AuthadaAuthenticationLibraryUnbundledStatic.xcframework`, `Lottie.xcframework` and `OpenSSL.xcframework` to `Frameworks, Libraries, and Embedded Content` section of your application target.
 - Verify that `Link Binary With Libraries` in your target’s Build Phases include `AuthadaAuthenticationLibraryUnbundledStatic.xcframework`, `Lottie.xcframework` and `OpenSSL.xcframework`.
-- Verify that `Embed Frameworks` in your target’s Build Phases include `AuthadaAuthenticationLibraryUnbundledStatic.xcframework`, `Lottie.xcframework` and `OpenSSL.xcframework`.
+- Verify that `Embed Frameworks` in your target’s Build Phases include `Lottie.xcframework` and `OpenSSL.xcframework`.
+- Verify that `Embed Frameworks` in your target's Build Phases **do not** include `AuthadaAuthenticationLibraryUnbundledStatic.xcframework`.
 - Verify that `Copy resources` in your target’s Build Phases include `AALUSResources.bundle`.
 
 #### IDnowEIDDynamic library
@@ -129,59 +130,60 @@ For Standalone mode, there is no difference that you use Governikus or Authada, 
 Please only provide following parameters in the start method.
 
 #### Start the SDK
-Here is an implementation example of launching the eID SDK from a host app:
+You can start the sdk using 2 methods :
+- ⚠️ Deprecated method with callback and host view controller:
 
 ```swift
-func startEIDFlow(token: String, viewController: UIViewController) {
-    let config = try EIDConfig.Builder().build()
-    EIDSdk.shared.start(
-      presentationViewController: viewController, 
-      token: token, 
-      config: config, 
-      callback: self
-    )
+func start(presentationViewController: UIViewController,
+           token: String,
+           config: EIDConfig,
+           callback: EIDCallback)
+```
+- 💡 Since 1.3.0, prefer using the new async/await method which simplify integration
+
+```swift
+func start(identToken: String,
+           config: EIDConfig) async throws(EIDError)
+```
+Here is an example of how to call it:
+```swift
+let defaultConfig = try EIDConfig.Builder().build()
+do {
+    try await EIDSdk.shared.start(identToken: identToken
+                                  config: defaultConfig)
+    // Handle success.
+} catch {
+    // Handle error.
 }
 ```
+
 This code call the main start method to launch the eID library in a standalone mode. It takes several parameters:
 
 | Parameters | Type          | Description |
 | ---------- | ------------- | ----------- |
-| presentationViewController   | `UIViewController`    | The presentation controller should support modal presentation from it. <br><br>Additionally, it is used to determine the appearance mode from the integrator app by accessing the userInterfaceStyle. |
-| token      | `String`      | The provided Ident token. |
+| identToken | `String`      | The provided Ident token. |
 | config     | `EIDConfig`   | Object used to configure the SDK (see [Customization](#customization) section). |
-| callback   | `EIDCallback` | Protocol used to received the result of the eID session. |
 
 #### Handle result
-Ensure the SDK start with the callback argument mentioned above, and then handling the result in these two methods:
+With the legacy deprecated implementation, callback argument was needed in start method then your object must inherit from EIDCallback.
 
-```swift
-// MARK: - EIDCallback
-extension ClientAppViewModel: EIDCallback {
-    func onSuccess() {
-        // Handle success case here
-    }
-    func onFailure(error: EIDError) {
-        // Handle error cases here.
-    }
-}
-```
+📣 Since 1.3.0, prefer using the new async/await method which simplify integration. It return void for success and an `EIDError` in case of failure (see [Error Description](#error-description) section).
 
 ### Embedded Mode
 The embedded mode is another endpoint to start eID using a `token`, a `mobileToken`, a `sessionToken` and a specific embedded config. It is only here for internal integration into IDnow product. 
-
-So, as a client, you don't need to worry about these 2 functions: 
+⚠️ As external client, you don't need to worry about these 2 functions: 
 
 ```swift
-EIDSdk.shared.start(
-  identToken: identToken,
-  mobileToken: mobileToken,
-  sessionToken: sessionToken,
-  embeddedConfig: EIDEmbeddedConfig())
+func start(
+  identToken: String,
+  mobileToken: String,
+  sessionToken: String,
+  embeddedConfig: EIDEmbeddedConfig)
 ```
 and 
 
 ```swift
-EIDSdk.shared.start(
+func start(
   identToken: String,
   tcTokenUrl: String,
   embeddedConfig: EIDEmbeddedConfig)
@@ -216,7 +218,7 @@ public enum EIDError {
     /// The eID card is deactivated, authority needs to be contacted.
     case cardDeactivated
     /// The eID card has been lost and can not be found. A new session can be start again.
-    /// Notes: Happend on the Governikus provider only. Authada allow card lost retry directly.
+    /// Notes: Happens on the Governikus provider only. Authada allow card lost retry directly.
     case cardLost
     /// The scanned card is not compatible, faulty or expired. User should change or update its document
     case invalidCard

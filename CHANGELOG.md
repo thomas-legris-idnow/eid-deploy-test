@@ -1,13 +1,37 @@
 # Changelog
 
-## [2.0.0] - 2026-03
+## [1.3.4] - 2026-04-20
+### Added
+- Updated certificate pinning to use the intermediate certificate
+### Fixed
+- Fixed an issue where users could get stuck during the 5-pin flow
+- Fixed an issue where the title of a secondary button was sometimes displayed in white
+
+## [1.3.3] - 2026-04-16
+### Added
+- Support for Sunflower 2.1.8
+### Fixed
+- Fixed an issue where Lottie animations would not start playing
+
+## [1.3.2] - 2026-04-08
+### Fixed
+- Import Sunflower issues
+
+## [1.3.1] - 2026-04-02
+### Fixed
+- Accessibility issues
+
+## [1.3.0] - 2026-03-31
 ### SDK Update (breaking change)
 - The public EIDError `aborted` changed to add a reason enum value `EIDAbortedReason`.
 - The public EIDError `internalError` changed to add a reason enum value `EIDInternalErrorReason`.
+- The public EIDError `NetworkErrorReason` has been renamed to `EIDNetworkErrorReason`
+- New `cardLost` EIDError added. Not used for `Authada` provider flows.
 - Public API `start` method changes:
   - **Standalone mode**: New async/await `start` method for standalone mode. The legacy one with callback is still usable but deprecated.
   - **Embedded mode**: New `start` method not related to standalone witch takes mobileToken and sessionToken. Internal IDnow use only ⚠️
-  - Governikus support through a new dedicated target and a specific `start` method.
+### Added
+- Prepare future support of Governikus provider.
 
 ## [1.2.2] - 2026-01-30
 
